@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Saihttamu/jeu-de-la-vie#readme",
   "devDependencies": {
     "@types/node": "^13.7.4"
+  },
+  "dependencies": {
+    "clear": "^0.1.0"
   }
 }

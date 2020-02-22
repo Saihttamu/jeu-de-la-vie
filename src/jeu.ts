@@ -1,7 +1,8 @@
 import { Cellule } from "./cellule";
+let clear = require('clear');
 
-export const tailleJeuX: number = 24;
-export const tailleJeuY: number = 24;
+export const tailleJeuX: number = 50;
+export const tailleJeuY: number = 50;
 
 export class Jeu {
     tour: number = 0;
@@ -13,7 +14,7 @@ export class Jeu {
                 this.cellules[y] = [];
             }
             for (let x = 0; x < tailleJeuX; x++) {
-                this.cellules[y][x] = new Cellule(Math.random() < 0.05, x, y);
+                this.cellules[y][x] = new Cellule(Math.random() < 0.2, x, y);
             }
         }
     }
@@ -29,8 +30,14 @@ export class Jeu {
             }
             for (let x = 0; x < tailleJeuX; x++) {
                 let celluleACopier = this.cellules[y][x];
-                cellulesMAJ[y][x] = new Cellule(celluleACopier.vivante, celluleACopier.positionX, celluleACopier.positionY);
-                cellulesMAJ[y][x].mettreAJourVivacite(this.recupererCellulesVoisines(this.cellules[y][x]));
+                cellulesMAJ[y][x] = new Cellule(
+                    celluleACopier.vivante, 
+                    celluleACopier.positionX, 
+                    celluleACopier.positionY
+                );
+                cellulesMAJ[y][x].mettreAJourVivacite(
+                    this.recupererCellulesVoisines(this.cellules[y][x])
+                );
             }
         }
 
@@ -72,6 +79,8 @@ export class Jeu {
     }
     
     afficher() {
+        clear();
+
         console.log(`tour ${this.tour}\n`);
         let affichage: string = "";
 
